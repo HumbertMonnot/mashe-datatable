@@ -1,0 +1,55 @@
+<% tags = dataset[:tags].present? ? dataset[:tags].map { |tag| row.send(tag[:method_value]) }.compact.flatten : [] %>
+<div class="row g-0 data-row" data-tags="<%= tags.join(',') if tags.any? %>">
+  <% if dataset[:checkable] %>
+    <div class="col-auto">
+      <div class="cell checkbox-cell">
+        <input type="checkbox"
+               class="row-checkbox"
+               value="<%= row.send(dataset[:checkable][:method]) %>"
+               data-action="change->datatable#toggleRowSelection">
+      </div>
+    </div>
+  <% end %>
+
+  <% if dataset[:row_link].present? %>
+    <% path_params = dataset[:row_link][:other_params_path].dup %>
+    <% path_params << row %>
+    <%= link_to dataset[:row_link][:path], path_params, class: "row-link" %>
+
+    <% dataset[:columns].each do |column| %>
+        <div class="cell <%= column_classes(column) %>"
+            data-key="<%= column[:method] %>"
+            data-value="<%= row.send(column[:method]).to_s.downcase %>"
+            id="<%= dom_id(row, column[:method]) %>">
+          <%= format_cell_value(row, column, dataset) %>
+        </div>
+    <% end %>
+  <% else %>
+    <% dataset[:columns].each do |column| %>
+        <div class="cell <%= column_classes(column) %>"
+            data-key="<%= column[:method] %>"
+            data-value="<%= row.send(column[:method]).to_s.downcase %>"
+            id="<%= dom_id(row, column[:method]) %>">
+          <%= format_cell_value(row, column, dataset) %>
+        </div>
+    <% end %>
+  <% end %>
+
+  <% unless dataset[:actions].empty? %>
+    <div class="col-lg-1">
+      <div class="cell action-cell">
+        <button data-action="click->datatable#toggleDropdown" class="action-button">
+          <i class="fas fa-ellipsis-h"></i>
+        </button>
+        <ul class="dropdown-menu">
+          <% dataset[:actions].each do |action| %>
+            <li>
+              <% conditions_met = check_action_conditions(row, action[:conditions]) %>
+              <%= build_action_link(row, action[:link], conditions_met) %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,29 @@
+<div data-controller="datatable">
+  <% if dataset[:title] %>
+    <h2 class="data-table-title"><%= dataset[:title] %></h2>
+  <% end %>
+
+  <!-- Contrôles -->
+  <% if dataset[:searchable] || dataset[:tags].present? || dataset[:bulk_actions].present? %>
+    <%= render partial: 'shared/data_table/data_table_controls', locals: { dataset: dataset } %>
+  <% end %>
+
+  <!-- Grille -->
+  <div class="data-table">
+    <!-- En-tête -->
+    <div class="row g-0 header-row">
+      <%= render partial: 'shared/data_table/data_table_header', locals: { dataset: dataset } %>
+    </div>
+
+    <!-- Corps -->
+    <% dataset[:rows].each do |row| %>
+      <%= render partial: 'shared/data_table/data_table_row', locals: { row: row, dataset: dataset } %>
+    <% end %>
+  </div>
+
+  <!-- Pagination -->
+  <%= render partial: 'shared/data_table/data_table_pagination', locals: { dataset: dataset } %>
+
+  <!-- Message "Aucun résultat" -->
+  <%= render partial: 'shared/data_table/data_table_no_results', locals: { dataset: dataset } %>
+</div>

@@ -1,0 +1,7 @@
+  <ul class="datatable-tab-links">
+    <% datasets.each_with_index do |dataset, index| %>
+      <li class="<%= 'active' if index == 0 %>">
+        <a href="#tab<%= index %>" data-tabs-target="link" data-action="click->tabs#selectTab"><%= dataset[:tab_title] %></a>
+      </li>
+    <% end %>
+  </ul>

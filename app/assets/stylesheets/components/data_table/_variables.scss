@@ -1,0 +1,40 @@
+// Variables de couleur
+$text-color: #333333;
+$primary-color: #0d0a67;
+$secondary-color: #cb7641;
+$background-color: white;
+
+// Couleurs pour les lignes
+$row-bg-color: #ffffff;
+$row-alt-bg-color: #F8FAFC;
+$row-hover-color: rgba($primary-color, 0.02);
+$row-selected-color: rgba($primary-color, 0.05);
+
+// Header
+$header-text-color: #4A5568;
+$header-border-color: #DDE3EE;
+$header-height: 40px;
+
+// Body
+$body-height: 40px;
+
+// Tags
+$tag-bg-color: #e0e0e0;
+$tag-text-color: $text-color;
+$tag-active-bg-color: $secondary-color;
+$tag-active-text-color: #ffffff;
+$tag-border-radius: 12px;
+
+// Padding
+$table-padding-x: 16px;
+$table-padding-y: 10px;
+
+// Action Cell
+$action-cell-width: 100px;
+$action-button-padding: 6px 12px;
+$action-menu-min-width: 160px;
+$action-menu-padding: 8px 0;
+$action-menu-item-padding: 8px 16px;
+$action-menu-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+$action-text-color: #6c757d; // couleur standard pour text-muted
+$action-text-hover-color: darken(#6c757d, 15%);

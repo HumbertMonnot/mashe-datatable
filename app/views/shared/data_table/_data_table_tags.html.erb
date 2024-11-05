@@ -1,0 +1,25 @@
+<div class="data-table-tags">
+  <div class="filter-dropdown">
+    <button class="filter-button" data-action="click->datatable#toggleDropdown">
+      <i class="fas fa-filter filter-icon"></i>
+        Filtrer
+      <i class="fas fa-chevron-down"></i>
+    </button>
+    <div class="dropdown-content" data-datatable-target="filterDropdown">
+      <% dataset[:tags].each do |tag_infos| %>
+        <div class="filter-group">
+          <div class="filter-group-title"><%= tag_infos[:title] %></div>
+          <% tag_values = dataset[:rows].map { |row| row.send(tag_infos[:method_value]) }.flatten.compact.uniq %>
+          <% tag_names = dataset[:rows].map { |row| row.send(tag_infos[:method_name]) }.flatten.compact.uniq %>
+          <% tag_values.each_with_index do |tag_value, index| %>
+            <button class="tag"
+                    data-action="click->datatable#toggleTag"
+                    data-tag="<%= tag_value %>">
+              <%= tag_names[index] %>
+            </button>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

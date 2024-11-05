@@ -1,0 +1,24 @@
+<div class="data-table-pagination">
+  <div class="pagination-controls" data-datatable-target="paginationControls">
+    <button data-action="click->datatable#prevPage" class="pagination-button">
+      <i class="fas fa-chevron-left"></i>
+    </button>
+    <div class="pagination-pages" data-datatable-target="paginationPages">
+      <!-- Les numéros de page seront générés dynamiquement ici -->
+    </div>
+    <button data-action="click->datatable#nextPage" class="pagination-button">
+      <i class="fas fa-chevron-right"></i>
+    </button>
+  </div>
+
+  <div class="per-page-selector">
+    <label for="per-page">Par page :</label>
+    <select id="per-page"
+            data-datatable-target="perPageSelect"
+            data-action="change->datatable#changePerPage">
+      <% dataset[:pagination][:per_page_options]&.each do |option| %>
+        <option value="<%= option %>" <%= 'selected' if option == dataset[:pagination][:initial_per_page] %>><%= option %></option>
+      <% end %>
+    </select>
+  </div>
+</div>

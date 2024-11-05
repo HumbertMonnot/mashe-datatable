@@ -1,0 +1,19 @@
+<div class="data-table-controls">
+  <div class="controls-left">
+    <% if dataset[:searchable] %>
+      <%= render partial: 'shared/data_table/data_table_search' %>
+    <% end %>
+  </div>
+
+  <div class="controls-center">
+    <% if dataset[:tags].present? %>
+      <%= render partial: 'shared/data_table/data_table_tags', locals: { dataset: dataset } %>
+    <% end %>
+  </div>
+
+  <div class="controls-right">
+    <% if dataset[:checkable] && dataset[:bulk_actions].present? %>
+      <%= render partial: 'shared/data_table/data_table_bulk_actions', locals: { dataset: dataset } %>
+    <% end %>
+  </div>
+</div>

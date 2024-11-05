@@ -1,0 +1,56 @@
+@import "variables";
+
+.data-table-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  text-align: center;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  margin-top: 15px;
+}
+
+.data-table-wrapper {
+  width: 100%;
+  background-color: $background-color;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.data-table-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: $table-padding-y $table-padding-x;
+  position: relative;
+}
+
+.controls-left {
+  flex: 0 0 auto;
+  margin-right: auto;
+}
+
+.controls-center {
+  flex: 0 0 auto;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.controls-right {
+  flex: 0 0 auto;
+  margin-left: auto;
+}
+
+// Responsivité
+@media (max-width: 768px) {
+  .data-table-wrapper {
+    padding: 10px;
+  }
+
+  .data-table-controls {
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 10px;
+  }
+}

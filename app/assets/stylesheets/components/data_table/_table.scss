@@ -1,0 +1,139 @@
+@import "variables";
+
+.data-table {
+  .row {
+    margin: 0;
+    font-size: 14px;
+    &.header-row {
+      background-color: #f8f9fa;
+      height: $header-height;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-family: 'Roboto', sans-serif;
+      font-size: 12px;
+      text-align: center;
+      border-bottom: 1px solid $header-border-color;
+      color: $header-text-color;
+    }
+
+    .row-link {
+      text-decoration: none;
+      transform: scale(1.0);
+    }
+
+    &.data-row {
+      height: $body-height;
+      white-space: nowrap;
+      overflow: visible;
+      text-overflow: ellipsis;
+      border-bottom: 1px solid $header-border-color;
+
+      &:hover {
+        background-color: $row-hover-color;
+      }
+    }
+  }
+
+  .cell {
+    padding: 2px 8px;
+    // overflow: hidden;
+    text-overflow: ellipsis;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    height: 100%;
+
+    &.header-cell {
+      font-weight: 500;
+      overflow: visible !important;
+
+      &.sortable {
+        cursor: pointer;
+
+        &:hover {
+          background-color: #e9ecef;
+        }
+      }
+    }
+  }
+
+  .checkbox-cell {
+    width: 48px;
+    text-align: center;
+  }
+
+  .action-cell {
+    width: $action-cell-width;
+    text-align: right;
+    position: relative;
+
+    .action-button {
+      background: none;
+      border: none;
+      padding: $action-button-padding;
+      color: $action-text-color;
+      transition: color 0.2s ease;
+      cursor: pointer;
+
+      &:hover {
+        color: $action-text-hover-color;
+      }
+    }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      right: 0;
+      top: 100%;
+      min-width: $action-menu-min-width;
+      padding: $action-menu-padding;
+      background-color: white;
+      box-shadow: $action-menu-shadow;
+      border-radius: 4px;
+      z-index: 1000;
+
+      &.show {
+        display: block;
+      }
+
+      .dropdown-item {
+        display: block;
+        width: 100%;
+        padding: $action-menu-item-padding;
+        font-size: 14px;
+        color: inherit;
+        text-decoration: none;
+
+        &:hover {
+          background-color: $row-hover-color;
+          text-decoration: none;
+        }
+
+        &.disabled {
+          color: $action-text-color;
+          opacity: 0.5;
+          cursor: not-allowed;
+          pointer-events: none;
+
+          &:hover {
+            background-color: transparent;
+          }
+        }
+      }
+    }
+  }
+}
+
+.data-row {
+  &.filtered-out {
+    display: none !important;
+  }
+
+  &.even {
+    background-color: $row-bg-color;
+  }
+
+  &.odd {
+    background-color: $row-alt-bg-color;
+  }
+}

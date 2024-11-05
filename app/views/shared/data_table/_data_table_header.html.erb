@@ -1,0 +1,29 @@
+<div class="row g-0 header-row">
+  <% if dataset[:checkable] %>
+    <div class="col-auto">
+      <div class="cell checkbox-cell">
+        <input type="checkbox" id="select-all" data-action="change->datatable#toggleSelectAll">
+      </div>
+    </div>
+  <% end %>
+
+  <% dataset[:columns].each do |column| %>
+
+      <div class="cell header-cell <%= 'sortable' if column[:sortable] %> <%= column_classes(column) %>"
+           data-datatable-target="header"
+           <%= "data-action=click->datatable#sort" if column[:sortable] %>
+           data-column-key="<%= column[:method] %>"
+           data-column-type="<%= column[:type] %>">
+        <%= column[:header] %>
+        <% if column[:sortable] %>
+          <span class="sort-arrow"></span>
+        <% end %>
+    </div>
+  <% end %>
+
+  <% unless dataset[:actions].empty? %>
+    <div class="col-auto">
+      <div class="cell action-cell"></div>
+    </div>
+  <% end %>
+</div>

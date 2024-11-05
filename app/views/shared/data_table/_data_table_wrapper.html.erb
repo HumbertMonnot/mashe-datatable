@@ -1,0 +1,14 @@
+<% if dataset.is_a?(Array) %>
+  <div class="datatable-tabs" data-controller="tabs">
+    <%= render partial: "shared/data_table/data_table_wrapper_tabs", locals: { dataset: dataset } %>
+    <div class="datatable-tab-content">
+      <% dataset.each_with_index do |dataset, index| %>
+        <div id="tab<%= index %>" class="datatable-tab <%= 'active' if index == 0 %>" data-tabs-target="tab">
+          <%= render partial: "shared/data_table/data_table", locals: { dataset: dataset } %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% else %>
+  <%= render partial: "shared/data_table/data_table", locals: { dataset: dataset }  %>
+<% end %>

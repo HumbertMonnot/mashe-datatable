@@ -1,0 +1,137 @@
+@import "variables";
+
+.data-table-pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: $table-padding-y $table-padding-x;
+  border-top: 1px solid $header-border-color;
+  position: relative;
+
+  .pagination-controls {
+    // position: absolute;
+    // left: 50%;
+    // transform: translateX(-50%);
+    // display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .per-page-selector {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+}
+
+/* Contrôles de pagination */
+.pagination-controls {
+  display: flex;
+  align-items: center;
+
+  .pagination-button {
+    padding: 6px 12px;
+    margin: 0 5px;
+    background-color: transparent;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+
+    &:disabled {
+      cursor: not-allowed;
+      > i {
+        color: #cccccc;;
+      }
+    }
+
+    &:hover:not(:disabled) {
+      font-weight: bold;
+    }
+
+    i {
+      font-size: 16px;
+      color: $primary-color;
+      margin-right: 0;
+    }
+  }
+
+  .pagination-pages {
+    display: flex;
+    align-items: center;
+
+    .pagination-page {
+      padding: 4px 10px;
+      margin: 0 2px;
+      background-color: #e0e0e0;
+      color: $text-color;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+
+      &.active {
+        background-color: $primary-color;
+        color: #ffffff;
+        padding: 6px 12px;
+      }
+
+      &:hover:not(.active) {
+        background-color: darken(#e0e0e0, 10%);
+      }
+    }
+  }
+}
+
+/* Sélecteur du nombre d'éléments par page */
+.per-page-selector {
+  display: flex;
+  align-items: center;
+
+  label {
+    margin-right: 2px;
+    width: 65px;
+    font-size: 14px;
+  }
+
+  select {
+    padding: 2px 8px;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    font-size: 14px;
+    color: $text-color;
+    width: 60px;
+
+    &:focus {
+      outline: none;
+      border-color: $primary-color;
+      box-shadow: 0 0 5px rgba($primary-color, 0.3);
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .data-table-pagination {
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+
+    .pagination-info {
+      order: 2;
+    }
+
+    .pagination-controls {
+      order: 1;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .per-page-select {
+      order: 3;
+    }
+  }
+}

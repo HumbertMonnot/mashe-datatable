@@ -1,0 +1,88 @@
+// Variables pour les breakpoints
+$breakpoint-mobile: 480px;
+$breakpoint-tablet: 768px;
+$breakpoint-desktop: 1024px;
+
+.data-grid {
+  // Styles de base
+  .grid-cell {
+    transition: all 0.3s ease;
+  }
+
+  // Styles pour mobile (< 480px)
+  @media (max-width: $breakpoint-mobile) {
+    .hide-mobile {
+      display: none !important;
+    }
+
+    .shrink-mobile {
+      width: min-content !important;
+      padding: 6px !important;
+    }
+
+    .truncate-mobile {
+      max-width: 120px;
+      white-space: nowrap;
+      // overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    // Réorganiser la grille pour mobile
+    .grid-header, .grid-row {
+      grid-template-columns: auto 1fr auto;
+      gap: 8px;
+    }
+  }
+
+  // Styles pour tablet (480px - 768px)
+  @media (min-width: $breakpoint-mobile) and (max-width: $breakpoint-tablet) {
+    .hide-tablet {
+      display: none !important;
+    }
+
+    .shrink-tablet {
+      width: min-content !important;
+      padding: 6px 12px !important;
+    }
+
+    .truncate-tablet {
+      max-width: 200px;
+      white-space: nowrap;
+      // overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  // Styles pour desktop (> 768px)
+  @media (min-width: $breakpoint-tablet) {
+    .hide-desktop {
+      display: none !important;
+    }
+
+    // Retour aux largeurs normales
+    .shrink-desktop {
+      width: auto !important;
+    }
+
+    .truncate-desktop {
+      white-space: normal;
+      overflow: visible;
+    }
+  }
+
+  // Styles pour les cellules d'action
+  .action-cell {
+    @media (max-width: $breakpoint-mobile) {
+      position: sticky;
+      right: 0;
+      background: inherit;
+    }
+  }
+
+  // Styles pour les cellules de checkbox
+  .checkbox-cell {
+    @media (max-width: $breakpoint-mobile) {
+      width: 32px !important;
+    }
+  }
+}
